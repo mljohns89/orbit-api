@@ -1,0 +1,39 @@
+[versions]
+scala = "2.13.10"
+scalaLangModules = "1.2.0"
+guava = "31.1-jre"
+
+junit = "4.13.2"
+scalaTest = "3.2.14"
+scalaTestPlus = "3.2.2.0"
+
+http4s = "0.23.18"
+circe = "0.14.5"
+
+
+[libraries]
+
+scala = { module = "org.scala-lang:scala-library", version.ref = "scala" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+junit = { module = "junit:junit", version.ref = "junit" }
+
+scalaTest = { module = "org.scalatest:scalatest_2.13", version.ref = "scalaTest" }
+scalaTestPlus = { module = "org.scalatestplus:junit-4-13_2.13", version.ref = "scalaTestPlus" }
+scalaLangModules = { module = "org.scala-lang.modules:scala-xml_2.13", version.ref = "scalaLangModules" }
+
+http4sCore = { module = "org.http4s:http4s-core_2.13", version.ref = "http4s" }
+http4sCirce = { module = "org.http4s:http4s-circe_2.13", version.ref = "http4s" }
+http4sDsl = { module = "org.http4s:http4s-dsl_2.13", version.ref = "http4s" }
+http4sEmberClient = { module = "org.http4s:http4s-ember-client_2.13", version.ref = "http4s" }
+http4sEmberServer = { module = "org.http4s:http4s-ember-server_2.13", version.ref = "http4s" }
+
+circeCore = { module = "io.circe:circe-core_2.13", version.ref = "circe" }
+circeGeneric = { module = "io.circe:circe-generic_2.13", version.ref = "circe" }
+circeParser = { module = "io.circe:circe-parser_2.13", version.ref = "circe" }
+
+[bundles]
+http4s = ['http4sCore', 'http4sCirce', 'http4sDsl', 'http4sEmberClient', 'http4sEmberServer']
+circe = ['circeCore', 'circeGeneric', 'circeParser']
+
+[plugins]
+
