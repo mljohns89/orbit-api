@@ -7,7 +7,7 @@ spec:
     - default: orbit-api
       name: APP_NAME
       type: string
-    - default: 'https://github.com/openshift-roadshow/nationalparks.git'
+    - default: 'https://github.com/mljohns89/orbit-api.git'
       description: The application git repository url
       name: APP_GIT_URL
       type: string
@@ -40,23 +40,23 @@ spec:
           workspace: app-source
     - name: build-and-test
       params:
-        - name: MAVEN_IMAGE
-          value: gcr.io/cloud-builders/mvn:3.9.1
-        - name: GOALS
+        - name: GRADLE_IMAGE
+          value: gcr.io/cloud-builders/gradle:3.5-jdk-8
+        - name: TASKS
           value:
-            - package
+            - build
         - name: PROXY_PROTOCOL
           value: http
       runAfter:
         - git-clone
       taskRef:
         kind: ClusterTask
-        name: maven
+        name: gradle
       workspaces:
         - name: source
           workspace: app-source
-        - name: maven-settings
-          workspace: maven-settings
+        - name: gradle-settings
+          workspace: gradle-settings
     - name: build-image
       params:
         - name: IMAGE
@@ -93,4 +93,4 @@ spec:
         name: openshift-client
   workspaces:
     - name: app-source
-    - name: maven-settings
+    - name: gradle-settings
