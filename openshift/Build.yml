@@ -1,0 +1,20 @@
+apiVersion: build.openshift.io/v1
+kind: Build
+metadata:
+  name: orbit-api-4
+spec:
+  source:
+    type: Dockerfile
+#    contextDir: ~/working/boa/orbit-api
+    dockerfile: Dockerfile
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: amazoncorretto:17
+#      dockerfilePath: ../Dockerfile
+#  output:
+#    to:
+#      kind: DockerImage
+#      name: localhost:5000/orbit-api:latest
