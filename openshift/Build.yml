@@ -1,12 +1,15 @@
 apiVersion: build.openshift.io/v1
 kind: Build
 metadata:
-  name: orbit-api-4
+  name: orbit-api-5
 spec:
   source:
-    type: Dockerfile
-#    contextDir: ~/working/boa/orbit-api
-    dockerfile: Dockerfile
+#    type: Dockerfile
+##    contextDir: ~/working/boa/orbit-api
+#    dockerfile: Dockerfile
+    type: Git
+    git:
+      uri: https://github.com/mljohns89/orbit-api.git
   strategy:
     type: Docker
     dockerStrategy:
