@@ -1,14 +1,20 @@
 # Build Docker Image
 
 ```bash
+docker build -t orbit-api .
+
 docker build -t mljohns89-dev/orbit-api .
 
 docker buildx build --platform=linux/amd64 -t mljohns89-dev/orbit-api .
+
+docker buildx build --platform=linux/amd64 -t orbit-api .
 ```
 
 # Create Docker Container
 
 ```bash
+docker run -d -p 8080:8080 --name orbit-api orbit-api
+
 docker run -d -p 8080:8080 --name orbit-api mljohns89-dev/orbit-api
 ```
 

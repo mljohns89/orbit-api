@@ -18,7 +18,7 @@ You can create a Local Openshift Cluster using the `crc` cli.
     
     Log in as administrator:
       Username: kubeadmin
-      Password: 7n22E-aD9nx-VzXYL-oHfuz
+      Password: znkoy-vFHGh-LptL4-KU6qS
     
     Log in as user:
       Username: developer
@@ -54,3 +54,21 @@ image-registry.openshift-image-registry.svc:5000/mljohns89-dev/orbit-api@sha256:
 ```bash
   oc expose svc/orbit-api-app
 ```
+
+# CRC
+1. `crc daemon`
+2. `crc start`
+
+
+## Doing everything manually (Works)
+1. `oc create imagestream orbit-api`
+2. `oc get route -n openshift-image-registry`
+3. `docker login -u `oc whoami` -p `oc whoami --show-token` default-route-openshift-image-registry.apps-crc.testing `
+4. `docker build -t default-route-openshift-image-registry.apps-crc.testing/orbit-api/orbit-api:latest .`
+5. `docker tag orbit-api:latest default-route-openshift-image-registry.apps-crc.testing/orbit-api-is/orbit-api:latest`
+6. `docker push default-route-openshift-image-registry.apps-crc.testing/orbit-api/orbit-api:latest`
+
+## Via yml (works)
+1. `oc login -u kubeadmin -p "znkoy-vFHGh-LptL4-KU6qS" https://api.crc.testing:6443`
+2. https://federico.is/posts/2020/08/01/setup-crc-with-internal-image-registry/
+3. `oc apply -f orbit-api-v2.yml`

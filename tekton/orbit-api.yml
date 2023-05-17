@@ -38,25 +38,25 @@ spec:
       workspaces:
         - name: output
           workspace: app-source
-    - name: build-and-test
-      params:
-        - name: GRADLE_IMAGE
-          value: gcr.io/cloud-builders/gradle:3.5-jdk-8
-        - name: TASKS
-          value:
-            - build
-        - name: PROXY_PROTOCOL
-          value: http
-      runAfter:
-        - git-clone
-      taskRef:
-        kind: ClusterTask
-        name: gradle
-      workspaces:
-        - name: source
-          workspace: app-source
-        - name: gradle-settings
-          workspace: gradle-settings
+#    - name: build-and-test
+#      params:
+#        - name: GRADLE_IMAGE
+#          value: gcr.io/cloud-builders/gradle:3.5-jdk-8
+#        - name: TASKS
+#          value:
+#            - build
+#        - name: PROXY_PROTOCOL
+#          value: http
+#      runAfter:
+#        - git-clone
+#      taskRef:
+#        kind: ClusterTask
+#        name: gradle
+#      workspaces:
+#        - name: source
+#          workspace: app-source
+#        - name: gradle-settings
+#          workspace: gradle-settings
     - name: build-image
       params:
         - name: IMAGE
