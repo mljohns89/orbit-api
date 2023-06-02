@@ -29,9 +29,10 @@ items:
       type: Git
     strategy:
       dockerStrategy:
-        from:
-          kind: ImageStreamTag
-          name: amazoncorretto:17
+        dockerfilePath: ../Dockerfile
+#        from:
+#          kind: ImageStreamTag
+#          name: amazoncorretto:17
 #          namespace: orbit-api
       type: Docker
 #    triggers:
@@ -46,6 +47,8 @@ items:
 #      type: ImageChange
   status:
     lastVersion: 0
+
+
 - apiVersion: apps/v1
   kind: Deployment
   metadata:

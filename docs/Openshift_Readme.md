@@ -80,7 +80,5 @@ image-registry.openshift-image-registry.svc:5000/mljohns89-dev/orbit-api@sha256:
    2. `oc delete all --selector app=orbit-api`
 3. `oc apply -f openshift/Build.yml`
 4. Note:  This process will create a Build in the UI (but not run the Build) where as with orbit-api-v2.yml does not
-
-oc image mirror registry.access.redhat.com/ubi8/ubi:latest=default-route-openshift-image-registry.apps-crc.testing/orbit-api/ubi8:latest --insecure=true --filter-by-os=linux/amd64
-
-oc image mirror amazoncorretto:latest=default-route-openshift-image-registry.apps-crc.testing/orbit-api/amazoncorretto:latest --insecure=true --filter-by-os=linux/amd64
+5. `docker image tag amazoncorretto:17 default-route-openshift-image-registry.apps-crc.testing/orbit-api/amazoncorretto:17`
+   1. We need to push the public `amazoncorretto:17` image to our local `crc` registry.  This makes it available to build from scratch
