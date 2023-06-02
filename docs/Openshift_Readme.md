@@ -71,4 +71,16 @@ image-registry.openshift-image-registry.svc:5000/mljohns89-dev/orbit-api@sha256:
 ## Via yml (works)
 1. `oc login -u kubeadmin -p "znkoy-vFHGh-LptL4-KU6qS" https://api.crc.testing:6443`
 2. https://federico.is/posts/2020/08/01/setup-crc-with-internal-image-registry/
-3. `oc apply -f orbit-api-v2.yml`
+3. `oc apply -f kubernetes/orbit-api-v2.yml`
+
+## Via auto-generated yml (works)
+1. `oc new-app . -o yaml > openshift/Build.yml`
+2. (Delete any existing stuff for orbit-api)
+   1. `oc get all --selector app=orbit-api -o name`
+   2. `oc delete all --selector app=orbit-api`
+3. `oc apply -f openshift/Build.yml`
+4. Note:  This process will create a Build in the UI (but not run the Build) where as with orbit-api-v2.yml does not
+
+oc image mirror registry.access.redhat.com/ubi8/ubi:latest=default-route-openshift-image-registry.apps-crc.testing/orbit-api/ubi8:latest --insecure=true --filter-by-os=linux/amd64
+
+oc image mirror amazoncorretto:latest=default-route-openshift-image-registry.apps-crc.testing/orbit-api/amazoncorretto:latest --insecure=true --filter-by-os=linux/amd64

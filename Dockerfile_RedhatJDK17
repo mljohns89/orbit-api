@@ -1,6 +1,8 @@
-FROM amazoncorretto:17
+FROM registry.access.redhat.com/ubi8/openjdk-17
 
 VOLUME /orbit-api-volume
+
+WORKDIR /home/jboss/
 
 COPY . .
 
@@ -10,6 +12,9 @@ RUN chmod +x ./gradlew && \
     rm -rf build && \
     chmod +x ./app.jar
 
+
 EXPOSE 8080
 
 CMD ["java", "-jar", "app.jar"]
+
+#CMD ["java", "-jar", "/home/jboss/app.jar"]
