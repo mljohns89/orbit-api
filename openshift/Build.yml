@@ -32,7 +32,7 @@ items:
         from:
           kind: ImageStreamTag
           name: amazoncorretto:17
-          namespace: orbit-api
+#          namespace: orbit-api
       type: Docker
 #    triggers:
 #    - github:
